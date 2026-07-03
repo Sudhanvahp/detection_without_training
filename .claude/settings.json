@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(& \".\\\\venv\\\\Scripts\\\\python.exe\" -m py_compile config.py logger.py embedding.py database.py recognizer.py tracker.py main.py visualizer.py camera.py clihelpers.py register_faces.py register_live.py calibrate.py manage_db.py attendance.py; \"compile_exit=$LASTEXITCODE\")"
-    ]
-  }
-}

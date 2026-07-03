@@ -31,3 +31,6 @@ snapshots/
 Thumbs.db
 .idea/
 .vscode/
+
+# Claude Code local project settings
+.claude/
