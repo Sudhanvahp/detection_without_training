@@ -1,0 +1,33 @@
+# ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ── Virtual environment (do NOT commit — ~29k files) ────────────────────────
+venv/
+.venv/
+env/
+
+# ── Biometric / personal data (PRIVACY — do NOT commit) ─────────────────────
+# Reference face photos and the embeddings DB identify real people. Keep them
+# out of version control. See the Privacy section in README.md.
+faces/
+data/
+
+# ── Runtime output ──────────────────────────────────────────────────────────
+logs/
+snapshots/
+
+# ── Model weights cache (auto-downloaded to ~/.deepface) ────────────────────
+*.h5
+*.onnx
+*.pb
+
+# ── OS / editor cruft ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

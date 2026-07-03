@@ -1,0 +1,47 @@
+# Person Face Recognition — No Training Required
+# Identifies known people by name via webcam using ArcFace embeddings + SQLite
+#
+# Windows Installation:
+#   python -m venv venv
+#   venv\Scripts\activate
+#   pip install -r requirements.txt
+#
+# Recommended: Python 3.10 or 3.11
+# Python 3.12 has limited TensorFlow support — use 3.10/3.11 to avoid issues.
+#
+# First run auto-downloads model weights (cached permanently in ~/.deepface/weights/):
+#   ArcFace recognition model : ~137 MB  -> arcface_weights.h5
+#   YuNet detector (default)   : ~0.2 MB  -> face_detection_yunet_2023mar.onnx
+#   RetinaFace detector (opt.) : ~118 MB  -> retinaface.h5  (only if you switch backends)
+
+# Core
+opencv-python>=4.9.0
+numpy>=1.24.0,<2.0.0
+
+# Face recognition — ArcFace embeddings + YuNet detection, no C++ compilation needed
+deepface>=0.0.93
+
+# DeepFace backend (TF 2.16+ requires tf-keras separately)
+tensorflow>=2.13.0,<2.17.0
+tf-keras>=2.16.0
+
+# Image handling
+Pillow>=10.0.0
+
+# Optional alternative detector. The default backend is "yunet" (bundled with
+# opencv); install this only if you set DETECTOR_BACKEND = "retinaface" in config.py.
+retina-face>=0.0.14
+
+# Progress bars in register_faces.py
+tqdm>=4.65.0
+
+# Embedding encryption at rest (config.ENCRYPT_EMBEDDINGS; key at data/faces.key)
+cryptography>=42.0.0
+
+# Anti-spoofing liveness check (config.ANTI_SPOOFING) — FasNet runs on PyTorch.
+# CPU build is enough:  pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.0.0
+
+# ── Dev / testing ───────────────────────────────────────────────────────────
+# Run the unit suite (no camera/model needed):  pytest -q
+pytest>=7.4.0
