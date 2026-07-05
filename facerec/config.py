@@ -82,7 +82,11 @@ REG_BLUR_THRESHOLD = 25.0  # blur gate at registration (permissive — yunet han
 # A name is shown for a tracked face only after it wins CONFIRM_FRAMES of the last
 # TRACK_VOTE_WINDOW recognition passes (see tracking below). Smooths single-frame
 # flickers and name flip-flops. Confirmation latency ≈ CONFIRM_FRAMES × FRAME_SKIP frames.
-CONFIRM_FRAMES = 3
+# 2 votes ≈ 0.7 s to a confirmed name at ~3 passes/s on CPU (each pass costs
+# ~250 ms of ArcFace inference). Was 3, but the margin check, the tracker's
+# embedding veto, and sticky confirmed labels now do the anti-flicker work,
+# so the extra vote bought latency, not stability. Raise to 3 on noisy setups.
+CONFIRM_FRAMES = 2
 
 # ── Multi-face tracking ────────────────────────────────────────────────────────
 # Each detected face gets a persistent integer id across recognition passes, and
