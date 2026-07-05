@@ -1,5 +1,4 @@
 @echo off
 cd /d "%~dp0"
-call venv\Scripts\activate.bat
-python tools\register_faces.py %*
+"%~dp0venv\Scripts\python.exe" tools\register_faces.py %*
 pause

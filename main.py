@@ -391,6 +391,21 @@ def main(argv=None) -> None:
     if sys.version_info >= (3, 12):
         print("[WARNING] Python 3.12+ has limited TensorFlow support. Use 3.10 or 3.11.")
 
+    # Fail fast with a clear message instead of opening the camera and silently
+    # erroring on every recognition pass (the classic "no detection happened").
+    try:
+        import deepface  # noqa: F401
+    except ImportError:
+        print(
+            "\nERROR: 'deepface' is not installed in THIS Python interpreter:\n"
+            f"  {sys.executable}\n\n"
+            "You are probably outside the project venv. Fix:\n"
+            "  venv\\Scripts\\activate\n"
+            "  python main.py\n"
+            "or simply double-click start.bat (it always uses the venv).\n"
+        )
+        sys.exit(1)
+
     setup_logger()
     _log.info("Starting Face Recognition System")
     _configure_tensorflow()
