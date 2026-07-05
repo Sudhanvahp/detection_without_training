@@ -28,7 +28,7 @@ MATCH_MARGIN = 0.05
 MAX_DETECT_SIDE = 1920
 
 # ── Camera ───────────────────────────────────────────────────────────────────
-CAMERA_INDEX  = 1   # 0 = built-in laptop cam, 1 = external webcam
+CAMERA_INDEX  = 0   # 0 = built-in laptop cam, 1 = external webcam
 FRAME_WIDTH   = 1280
 FRAME_HEIGHT  = 720
 CAMERA_FPS    = 30  # requested capture FPS (driver may pick the nearest supported value)
