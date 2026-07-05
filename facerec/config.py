@@ -72,7 +72,10 @@ DETECTION_LOG_INTERVAL_S = 60  # log a given person at most once per N seconds. 
 MIN_FACE_PIXELS    = 60    # faces narrower/shorter than N px are skipped (too small)
 MIN_FACE_CONFIDENCE = 0.50 # skip detections below this detector score; guards against the
                            # whole-frame "phantom face" that enforce_detection=False can return
-BLUR_THRESHOLD     = 60.0  # Laplacian variance below this = blurry frame, skip recognition
+BLUR_THRESHOLD     = 15.0  # Laplacian variance below this = blurry frame, skip recognition.
+                           # Purpose: skip MOTION-blurred frames, not to demand a sharp camera —
+                           # soft webcams sit at ~20-25 at rest (measured), so 60 rejected every
+                           # frame. If you get false matches on a sharp camera, raise it back.
 REG_BLUR_THRESHOLD = 25.0  # blur gate at registration (permissive — yunet handles some blur)
 
 # ── Multi-frame confirmation ───────────────────────────────────────────────────
